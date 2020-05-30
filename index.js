@@ -28,8 +28,22 @@ const game = (() => {
   const player1 = Player("Player1", "X");
   const player2 = Player("Player1", "O");
 
-  let currentPlayer = 1;
-  player1.mark();
+  const turn = () => {
+    let currentPlayer = 1;
+    player1.mark();
+    document.addEventListener("click", (e) => {
+      if (!e.target.matches(".block")) return;
+      if (currentPlayer == 1) {
+        player2.mark();
+        currentPlayer = 0;
+      } else {
+        player1.mark();
+        currentPlayer = 1;
+      }
+    });
+  };
+  return { turn };
 })();
 
 gameBoard.render();
+game.turn();
