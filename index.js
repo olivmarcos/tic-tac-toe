@@ -3,18 +3,29 @@ const gameBoard = (() => {
   const _boardArray = ["", "", "", "", "", "", "", "", ""];
 
   function render() {
-      let i = 0; //only for test
-      _boardArray.forEach((item) => {
+    _boardArray.forEach((item) => {
       console.log(item);
       const _block = document.createElement("div");
       _block.classList.add("block");
-      _block.innerHTML = i;
+      _block.innerHTML = "";
       _board.appendChild(_block);
-      i++;
     });
   }
-
   return { render };
 })();
 
+const Player = (name, value) => {
+  function mark() {
+    document.addEventListener("click", (e) => {
+      if (!e.target.matches(".block")) return;
+      e.target.innerHTML = value;
+    });
+  }
+
+  return { name, value, mark };
+};
+
 gameBoard.render();
+
+const player1 = Player("Marcos", "X");
+player1.mark();

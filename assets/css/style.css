@@ -11,12 +11,14 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    background-color: #282828;
+    color: white;
 }
 
 #gameBoard {
     height: 450px;
     width: 450px;
-    background-color: white;
+    background-color: aquamarine;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
     row-gap: 6px;
@@ -24,10 +26,11 @@
 }
 
 .block {
-    background-color: aquamarine;
+    background-color: #282828;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fafafa;
     font-size: 4rem;
+    color: white;
+    cursor: pointer;
 }
