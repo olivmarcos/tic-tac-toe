@@ -28,6 +28,10 @@ const game = (() => {
   const player1 = Player("Player1", "X");
   const player2 = Player("Player1", "O");
 
+  const startGame = () => {
+    turn();
+  }
+
   const turn = () => {
     let currentPlayer = 1;
     player1.mark();
@@ -35,15 +39,16 @@ const game = (() => {
       if (!e.target.matches(".block")) return;
       if (currentPlayer == 1) {
         player2.mark();
-        currentPlayer = 0;
+        currentPlayer = 2;
       } else {
         player1.mark();
         currentPlayer = 1;
       }
     });
   };
-  return { turn };
+  
+  return { startGame };
 })();
 
 gameBoard.render();
-game.turn();
+game.startGame();
