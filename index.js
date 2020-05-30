@@ -2,7 +2,7 @@ const gameBoard = (() => {
   const _board = document.querySelector("#gameBoard");
   const _boardArray = ["", "", "", "", "", "", "", "", ""];
 
-  function render() {
+  const render = () => {
     _boardArray.forEach((item) => {
       console.log(item);
       const _block = document.createElement("div");
@@ -10,22 +10,26 @@ const gameBoard = (() => {
       _block.innerHTML = "";
       _board.appendChild(_block);
     });
-  }
+  };
   return { render };
 })();
 
-const Player = (name, value) => {
-  function mark() {
+const Player = (name, sign) => {
+  const mark = () => {
     document.addEventListener("click", (e) => {
       if (!e.target.matches(".block")) return;
-      e.target.innerHTML = value;
+      e.target.innerHTML = sign;
     });
-  }
-
-  return { name, value, mark };
+  };
+  return { name, sign, mark };
 };
 
-gameBoard.render();
+const game = (() => {
+  const player1 = Player("Player1", "X");
+  const player2 = Player("Player1", "O");
 
-const player1 = Player("Marcos", "X");
-player1.mark();
+  let currentPlayer = 1;
+  player1.mark();
+})();
+
+gameBoard.render();
