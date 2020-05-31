@@ -1,16 +1,19 @@
 const gameBoard = (() => {
   const _board = document.querySelector("#gameBoard");
-  const _boardArray = ["", "", "", "", "", "", "", "", ""];
+  let boardArray = ["", "", "", "", "", "", "", "", ""];
 
   const render = () => {
-    _boardArray.forEach((item) => {
+    let count = 0;
+    boardArray.forEach(() => {
       const _block = document.createElement("div");
       _block.classList.add("block");
+      _block.setAttribute('value', count);
       _board.appendChild(_block);
+      count++;
     });
   };
 
-  return { render };
+  return { render, boardArray };
 })();
 
 const Player = (name, sign) => {
@@ -28,11 +31,14 @@ const game = (() => {
       if (!e.target.matches(".block")) return;
       if (currentPlayer == 1 && e.target.innerHTML === "") {
         e.target.innerHTML = player1.sign;
+        gameBoard.boardArray[e.target.getAttribute('value')] = player1.sign;
         currentPlayer = 2;
       } else if (currentPlayer == 2 && e.target.innerHTML === "") {
         e.target.innerHTML = player2.sign;
+        gameBoard.boardArray[e.target.getAttribute('value')] = player2.sign;
         currentPlayer = 1;
-      }      
+      }
+      console.log(gameBoard.boardArray);
     });
   };
 
