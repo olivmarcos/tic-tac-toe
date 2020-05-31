@@ -4,49 +4,42 @@ const gameBoard = (() => {
 
   const render = () => {
     _boardArray.forEach((item) => {
-      console.log(item);
       const _block = document.createElement("div");
       _block.classList.add("block");
-      _block.innerHTML = "";
       _board.appendChild(_block);
     });
   };
+
   return { render };
 })();
 
 const Player = (name, sign) => {
-  const mark = () => {
-    document.addEventListener("click", (e) => {
-      if (!e.target.matches(".block")) return;
-      e.target.innerHTML = sign;
-    });
-  };
-  return { name, sign, mark };
+  return { name, sign };
 };
 
 const game = (() => {
   const player1 = Player("Player1", "X");
   const player2 = Player("Player1", "O");
 
-  const startGame = () => {
-    turn();
-  }
-
-  const turn = () => {
+  const _turn = () => {
     let currentPlayer = 1;
-    player1.mark();
+
     document.addEventListener("click", (e) => {
       if (!e.target.matches(".block")) return;
-      if (currentPlayer == 1) {
-        player2.mark();
+      if (currentPlayer == 1 && e.target.innerHTML === "") {
+        e.target.innerHTML = player1.sign;
         currentPlayer = 2;
-      } else {
-        player1.mark();
+      } else if (currentPlayer == 2 && e.target.innerHTML === "") {
+        e.target.innerHTML = player2.sign;
         currentPlayer = 1;
-      }
+      }      
     });
   };
-  
+
+  const startGame = () => {
+    _turn();
+  };
+
   return { startGame };
 })();
 
