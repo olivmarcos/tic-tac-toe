@@ -4,10 +4,10 @@ const gameBoard = (() => {
 
   const render = () => {
     let count = 0;
-    boardArray.forEach(() => {
+    boardArray.forEach((item) => {
       const _block = document.createElement("div");
       _block.classList.add("block");
-      _block.setAttribute('value', count);
+      _block.setAttribute('value', item);
       _board.appendChild(_block);
       count++;
     });
@@ -33,8 +33,9 @@ const game = (() => {
       if (!e.target.matches(".block")) return;
 
       if (currentPlayer == 1 && e.target.innerHTML === "") {
-        e.target.innerHTML = player1.sign;
-        playerOneArr.push(gameBoard.boardArray[e.target.getAttribute('value')]);
+        e.target.innerHTML = player1.sign;        
+        playerOneArr.push(parseInt(e.target.getAttribute('value')));
+
         if(_checkWin(playerOneArr)) {
           _congrastTheWinner(player1);
           return;
@@ -42,7 +43,8 @@ const game = (() => {
         currentPlayer = 2;
       } else if (currentPlayer == 2 && e.target.innerHTML === "") {
         e.target.innerHTML = player2.sign;
-        playerTwoArr.push(gameBoard.boardArray[e.target.getAttribute('value')]);      
+        playerTwoArr.push(parseInt(e.target.getAttribute('value')));
+        
         if(_checkWin(playerTwoArr)) {
           _congrastTheWinner(player2);
           return;
