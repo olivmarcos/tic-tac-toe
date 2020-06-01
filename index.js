@@ -35,13 +35,19 @@ const game = (() => {
       if (currentPlayer == 1 && e.target.innerHTML === "") {
         e.target.innerHTML = player1.sign;
         playerOneArr.push(gameBoard.boardArray[e.target.getAttribute('value')]);
-        if(_checkWin(playerOneArr)) console.log(`${player1.name} is the winner!`);
+        if(_checkWin(playerOneArr)) {
+          _congrastTheWinner(player1);
+          return;
+        }
         currentPlayer = 2;
       } else if (currentPlayer == 2 && e.target.innerHTML === "") {
         e.target.innerHTML = player2.sign;
-        playerTwoArr.push(gameBoard.boardArray[e.target.getAttribute('value')]);        
+        playerTwoArr.push(gameBoard.boardArray[e.target.getAttribute('value')]);      
+        if(_checkWin(playerTwoArr)) {
+          _congrastTheWinner(player2);
+          return;
+        }  
         currentPlayer = 1;
-        if(_checkWin(playerTwoArr)) console.log(`${player2.name} is the winner!`);
       }
     });
   };
@@ -51,6 +57,13 @@ const game = (() => {
     const sum = array.reduce(add);
     
     return sum === 15;
+  }
+
+  const _congrastTheWinner = (player) => {
+    const div = document.querySelector('.winner');
+    const h1 = document.querySelector('.winner h1');
+    div.style.visibility = 'visible'
+    h1.innerHTML = `${player.name} won!`
   }
 
   const startGame = () => {
