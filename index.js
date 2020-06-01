@@ -56,7 +56,7 @@ const game = (() => {
     const add = (a , b) => a + b;
     const sum = array.reduce(add);
     
-    return sum === 15;
+    return sum === 15 && array.length === 3;
   }
 
   const _congrastTheWinner = (player) => {
