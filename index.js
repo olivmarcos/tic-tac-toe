@@ -3,13 +3,11 @@ const gameBoard = (() => {
   let boardArray = [4, 9, 2, 3, 5, 7, 8, 1, 6];
 
   const render = () => {
-    let count = 0;
     boardArray.forEach((item) => {
       const _block = document.createElement("div");
       _block.classList.add("block");
       _block.setAttribute('value', item);
       _board.appendChild(_block);
-      count++;
     });
   };
 
@@ -44,7 +42,7 @@ const game = (() => {
       } else if (currentPlayer == 2 && e.target.innerHTML === "") {
         e.target.innerHTML = player2.sign;
         playerTwoArr.push(parseInt(e.target.getAttribute('value')));
-        
+
         if(_checkWin(playerTwoArr)) {
           _congrastTheWinner(player2);
           return;
