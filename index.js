@@ -1,3 +1,5 @@
+import { threeSum } from './assets/js/threeSum.js';
+
 const gameBoard = (() => {
   const _board = document.querySelector("#gameBoard");
   let boardArray = [4, 9, 2, 3, 5, 7, 8, 1, 6];
@@ -53,10 +55,8 @@ const game = (() => {
   };
 
   const _checkWin = (array) => {
-    const add = (a , b) => a + b;
-    const sum = array.reduce(add);
-    
-    return sum === 15 && array.length === 3;
+    const win = threeSum(array);
+    return win.length > 0
   }
 
   const _congrastTheWinner = (player) => {
