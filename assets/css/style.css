@@ -51,14 +51,14 @@
 }
 
 .winner:hover {
-    border-bottom: 5px solid #50fa7b;
+    border-bottom: 5px solid #f1fa8c;
 }
 
 #btn {
     width: 6rem;
     height: 2rem;
     cursor: pointer;
-    background-color: #50fa7b;
+    background-color: #f1fa8c;
     border: none;
 }
 
@@ -70,5 +70,5 @@
 }
 
 .display {
-    color: #50fa7b;
+    color: #f1fa8c;
 }
