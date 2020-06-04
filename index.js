@@ -22,6 +22,15 @@ const game = (() => {
   const player1 = Player("Player1", "X");
   const player2 = Player("Player2", "O");
 
+  let currentPlayer = 1;
+  let count = 0;
+
+  let playerOneArr = [];
+  let playerTwoArr = [];
+
+  let playerOneWon = false;
+  let playerTwoWon = false;
+
   const winConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -34,13 +43,6 @@ const game = (() => {
   ];
 
   const _turn = () => {
-    let currentPlayer = 1;
-    let playerOneArr = [];
-    let playerTwoArr = [];
-    let playerOneWon = false;
-    let playerTwoWon = false;
-    let count = 0;
-
     document.addEventListener("click", (e) => {
       if (!e.target.matches(".block")) return;
 
@@ -66,11 +68,12 @@ const game = (() => {
       }
       count++;
       if (!playerOneWon && !playerTwoWon && count == 9) _announceTie();
+      console.log(`${playerOneWon}, ${playerTwoWon}, ${count}`);
     });
   };
 
   let _checkWin = (arr) =>
-  winConditions.some((array) => array.every((e) => arr.includes(e)));
+    winConditions.some((array) => array.every((e) => arr.includes(e)));
 
   const _congrastTheWinner = (player) => {
     const div = document.querySelector(".winner");
@@ -86,8 +89,40 @@ const game = (() => {
     h1.innerHTML = `It's a tie!`;
   };
 
+  const resetGame = () => {
+    const button = document.querySelector("#btn");
+
+    const _setInvisible = () => {
+      const winnerDiv = document.querySelector(".winner");
+      winnerDiv.style.visibility = "hidden";
+    };
+
+    const _setBoardClean = () => {
+      let blocks = document.querySelectorAll(".block");
+      blocks.forEach((item) => {
+        item.innerHTML = "";
+      });
+    };
+
+    const _setPlayersClean = () => {
+      playerOneArr = [];
+      playerTwoArr = [];
+    };
+
+    button.addEventListener("click", () => {
+      _setInvisible();
+      _setBoardClean();
+      _setPlayersClean();
+      currentPlayer = 1;
+      count = 0;
+      playerOneWon = false;
+      playerTwoWon = false;
+    });
+  };
+
   const startGame = () => {
     _turn();
+    resetGame();
   };
 
   return { startGame };

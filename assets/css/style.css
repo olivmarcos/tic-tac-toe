@@ -1,52 +1,74 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    background-color: #282828;
-    color: white;
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #282a36;
+  color: white;
 }
 
 #gameBoard {
-    height: 450px;
-    width: 450px;
-    background-color: aquamarine;
-    display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    row-gap: 6px;
-    column-gap: 6px;
+  height: 450px;
+  width: 450px;
+  background-color: #ff79c6;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  row-gap: 6px;
+  column-gap: 6px;
 }
 
 .block {
-    background-color: #282828;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 4rem;
-    color: white;
-    cursor: pointer;
+  background-color: #282a36;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  color: white;
+  cursor: pointer;
 }
 
-.center {
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    left: 0;
-    right: 0;
-    width: 40%;
-    padding: 20px;
-    position: absolute;
-    background-color: white;
+.winner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 18rem;
+    height: 11rem;
     color: black;
-    z-index: 10;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
+    background-color: white;
+    position: fixed;
+    padding: 2rem;
+    border-radius: 20px;
+    border-bottom: 5px solid transparent;
+}
+
+.winner:hover {
+    border-bottom: 5px solid #50fa7b;
+}
+
+#btn {
+    width: 6rem;
+    height: 2rem;
+    cursor: pointer;
+    background-color: #50fa7b;
+    border: none;
+}
+
+#displays {
+    margin-bottom: 5rem;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.display {
+    color: #50fa7b;
+}
