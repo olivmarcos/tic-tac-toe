@@ -37,6 +37,9 @@ const game = (() => {
     let currentPlayer = 1;
     let playerOneArr = [];
     let playerTwoArr = [];
+    let playerOneWon = false;
+    let playerTwoWon = false;
+    let count = 0;
 
     document.addEventListener("click", (e) => {
       if (!e.target.matches(".block")) return;
@@ -47,6 +50,7 @@ const game = (() => {
 
         if (_checkWin(playerOneArr)) {
           _congrastTheWinner(player1);
+          playerOneWon = true;
         }
 
         currentPlayer = 2;
@@ -56,14 +60,17 @@ const game = (() => {
 
         if (_checkWin(playerTwoArr)) {
           _congrastTheWinner(player2);
+          playerTwoWon = true;
         }
         currentPlayer = 1;
       }
+      count++;
+      if (!playerOneWon && !playerTwoWon && count == 9) _announceTie();
     });
   };
 
   let _checkWin = (arr) =>
-    winConditions.some((array) => array.every((e) => arr.includes(e)));
+  winConditions.some((array) => array.every((e) => arr.includes(e)));
 
   const _congrastTheWinner = (player) => {
     const div = document.querySelector(".winner");
