@@ -54,7 +54,7 @@
     border-bottom: 5px solid #f1fa8c;
 }
 
-#btn {
+.btn {
     width: 6rem;
     height: 2rem;
     cursor: pointer;
@@ -63,7 +63,7 @@
 }
 
 #displays {
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
     width: 40%;
     display: flex;
     justify-content: space-between;
@@ -71,4 +71,38 @@
 
 .display {
     color: #f1fa8c;
+}
+
+.start {
+  width: 50%;
+  height: 35%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+
+}
+
+.playersName {
+  display: flex;
+  flex-direction: column;
+}
+
+.playersName > input {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.start > button {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  font-size: large;
+  width: 8rem;
+  height: 3rem;
+}
+
+h1 {
+  margin-bottom: 4rem;
 }

@@ -19,9 +19,6 @@ const Player = (name, sign) => {
 };
 
 const game = (() => {
-  const player1 = Player("Player1", "X");
-  const player2 = Player("Player2", "O");
-
   let currentPlayer = 1;
   let count = 0;
 
@@ -30,6 +27,9 @@ const game = (() => {
 
   let playerOneWon = false;
   let playerTwoWon = false;
+
+  let playerOneCount = 0;
+  let playerTwoCount = 0;
 
   const winConditions = [
     [0, 1, 2],
@@ -43,32 +43,37 @@ const game = (() => {
   ];
 
   const _turn = () => {
+    const scores = document.querySelectorAll(".score");
+    scores[0].innerHTML = `Score: ${playerOneCount}`;
+    scores[1].innerHTML = `Score: ${playerTwoCount}`;
+
     document.addEventListener("click", (e) => {
       if (!e.target.matches(".block")) return;
 
       if (currentPlayer == 1 && e.target.innerHTML === "") {
-        e.target.innerHTML = player1.sign;
+        e.target.innerHTML = _setPlayersName().player1.sign;
         playerOneArr.push(parseInt(e.target.getAttribute("value")));
 
         if (_checkWin(playerOneArr)) {
-          _congrastTheWinner(player1);
+          _congrastTheWinner(_setPlayersName().player1);
+          scores[0].innerHTML = `Score: ${playerOneCount++}`;
           playerOneWon = true;
         }
 
         currentPlayer = 2;
       } else if (currentPlayer == 2 && e.target.innerHTML === "") {
-        e.target.innerHTML = player2.sign;
+        e.target.innerHTML = _setPlayersName().player2.sign;
         playerTwoArr.push(parseInt(e.target.getAttribute("value")));
 
         if (_checkWin(playerTwoArr)) {
-          _congrastTheWinner(player2);
+          _congrastTheWinner(_setPlayersName().player2);
+          scores[0].innerHTML = `Score: ${playerTwoCount++}`;
           playerTwoWon = true;
         }
         currentPlayer = 1;
       }
       count++;
       if (!playerOneWon && !playerTwoWon && count == 9) _announceTie();
-      console.log(`${playerOneWon}, ${playerTwoWon}, ${count}`);
     });
   };
 
@@ -90,7 +95,7 @@ const game = (() => {
   };
 
   const resetGame = () => {
-    const button = document.querySelector("#btn");
+    const button = document.querySelector(".btn");
 
     const _setInvisible = () => {
       const winnerDiv = document.querySelector(".winner");
@@ -121,8 +126,37 @@ const game = (() => {
   };
 
   const startGame = () => {
-    _turn();
-    resetGame();
+    const startButton = document.querySelector(".start button");
+    startButton.addEventListener("click", () => {
+      const divStart = document.querySelector(".start");
+      const gameBoard = document.querySelector("#gameBoard");
+      const displays = document.querySelector("#displays");
+      divStart.style.visibility = "hidden";
+      gameBoard.style.visibility = "visible";
+      displays.style.visibility = "visible";
+      _setPlayersName();
+      _turn();
+      resetGame();
+      _setDisplay();
+    });
+  };
+
+  const _setPlayersName = () => {
+    const players = document.querySelectorAll(".playersName input");
+    const player1 = Player(players[0].value, "X");
+    const player2 = Player(players[1].value, "O");
+
+    return { player1, player2 };
+  };
+
+  const _setDisplay = () => {
+    const names = document.querySelectorAll(".name");
+    names[0].innerHTML = _setPlayersName().player1.name
+      ? _setPlayersName().player1.name
+      : "Player 1";
+    names[1].innerHTML = _setPlayersName().player2.name
+      ? _setPlayersName().player2.name
+      : "Player 2";
   };
 
   return { startGame };

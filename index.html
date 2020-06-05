@@ -8,21 +8,29 @@
 </head>
 <body>
     <div id="main">
-        <div id="displays">
+        <h1>Tic Tac Toe</h1>
+        <div id="displays" style="visibility: hidden;">
             <div class="display">
-                <h3>Player 1</h3>
-                <h3>Score: 1</h3>
+                <h3 class="name">Player 1</h3>
+                <h3 class="score"></h3>
             </div>
             <div class="display">
-                <h3>Player 2</h3>
-                <h3>Score: 1</h3>
+                <h3 class="name">Player 2</h3>
+                <h3 class="score"></h3>
             </div>
         </div>
         <div class="winner" style="visibility: hidden;">
             <h1></h1>
-            <button id="btn">play again</button>
+            <button class="btn">play again</button>
         </div>
-        <div id="gameBoard"></div>
+        <div id="gameBoard" style="visibility: hidden;"></div>
+        <div class="start">
+            <div class="playersName">
+                <input type="text" placeholder="Player 1">
+                <input type="text" placeholder="Player 2">
+            </div>
+            <button class="btn">Start</button>
+        </div>
     </div>
     <script src="index.js"></script>
 </body>
