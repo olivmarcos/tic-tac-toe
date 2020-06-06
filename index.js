@@ -43,7 +43,7 @@ const game = (() => {
   ];
 
   const _turn = () => {
-    const scores = document.querySelectorAll(".score");
+    let scores = document.querySelectorAll(".score");
     scores[0].innerHTML = `Score: ${playerOneCount}`;
     scores[1].innerHTML = `Score: ${playerTwoCount}`;
 
@@ -56,7 +56,7 @@ const game = (() => {
 
         if (_checkWin(playerOneArr)) {
           _congrastTheWinner(_setPlayersName().player1);
-          scores[0].innerHTML = `Score: ${playerOneCount++}`;
+          scores[0].innerHTML = `Score: ${playerOneCount += 1}`;
           playerOneWon = true;
         }
 
@@ -67,7 +67,7 @@ const game = (() => {
 
         if (_checkWin(playerTwoArr)) {
           _congrastTheWinner(_setPlayersName().player2);
-          scores[0].innerHTML = `Score: ${playerTwoCount++}`;
+          scores[1].innerHTML = `Score: ${playerTwoCount += 1}`;
           playerTwoWon = true;
         }
         currentPlayer = 1;
@@ -143,8 +143,8 @@ const game = (() => {
 
   const _setPlayersName = () => {
     const players = document.querySelectorAll(".playersName input");
-    const player1 = Player(players[0].value, "X");
-    const player2 = Player(players[1].value, "O");
+    const player1 = Player(!(players[0].value) ? 'Player 1': players[0].value, "X");
+    const player2 = Player(!(players[1].value) ? 'Player 2': players[1].value, "O");
 
     return { player1, player2 };
   };

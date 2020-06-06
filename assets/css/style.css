@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Indie Flower', cursive;
 }
 
 #main {
@@ -40,8 +41,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 18rem;
-    height: 11rem;
+    width: 20rem;
+    height: 15rem;
     color: black;
     background-color: white;
     position: fixed;
@@ -54,13 +55,7 @@
     border-bottom: 5px solid #f1fa8c;
 }
 
-.btn {
-    width: 6rem;
-    height: 2rem;
-    cursor: pointer;
-    background-color: #f1fa8c;
-    border: none;
-}
+
 
 #displays {
     margin-bottom: 1rem;
@@ -95,12 +90,11 @@
   padding: 1rem;
 }
 
-.start > button {
-  margin-top: 4rem;
-  margin-bottom: 2rem;
-  font-size: large;
-  width: 8rem;
-  height: 3rem;
+.btn {
+  background-color: #f1fa8c;
+  font-size: 1rem;
+  padding: .5rem 1rem .5rem 1rem;
+  cursor: pointer;
 }
 
 h1 {
