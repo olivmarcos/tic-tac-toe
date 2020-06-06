@@ -55,8 +55,6 @@
     border-bottom: 5px solid #f1fa8c;
 }
 
-
-
 #displays {
     margin-bottom: 1rem;
     width: 40%;
@@ -69,7 +67,7 @@
 }
 
 .start {
-  width: 50%;
+  width: 45%;
   height: 35%;
   background-color: white;
   display: flex;
@@ -87,6 +85,8 @@
 .playersName > input {
   margin: 1rem;
   padding: 1rem;
+  width: 18rem;
+
 }
 
 .btn {
@@ -121,5 +121,14 @@
     width: 350px;
     row-gap: 6.3px;
     column-gap: 6.3px;
+  }
+
+  .start {
+    width: 70%;
+    height: 40%;
+  }
+
+  .playersName > input {
+    width: 13rem;
   }
 }

@@ -129,8 +129,8 @@ const game = (() => {
         playerOneWon = false;
         playerTwoWon = false;
         if (button.innerHTML === "restart") {
-  scores[0].innerHTML = `Score: ${playerOneCount = 0}`;
-  scores[1].innerHTML = `Score: ${playerTwoCount = 0}`;
+          scores[0].innerHTML = `Score: ${(playerOneCount = 0)}`;
+          scores[1].innerHTML = `Score: ${(playerTwoCount = 0)}`;
         }
       });
     });
