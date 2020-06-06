@@ -119,13 +119,13 @@
   #gameBoard {
     height: 350px;
     width: 350px;
-    row-gap: 6.3px;
-    column-gap: 6.3px;
+    row-gap: 6.4px;
+    column-gap: 6.4px;
   }
 
   .start {
-    width: 70%;
-    height: 40%;
+    width: 90%;
+    height: 60%;
   }
 
   .playersName > input {
