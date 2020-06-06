@@ -113,3 +113,13 @@
 .board > button {
   margin-top: 6rem;
 }
+
+@media (max-width: 600px) {
+
+  #gameBoard {
+    height: 350px;
+    width: 350px;
+    row-gap: 6.3px;
+    column-gap: 6.3px;
+  }
+}
